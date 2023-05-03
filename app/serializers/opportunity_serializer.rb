@@ -3,4 +3,7 @@ class OpportunitySerializer < ActiveModel::Serializer
    has_many :tags
    belongs_to :employer
    has_many :applications
+   def description_summary
+    "#{self.object.description[0..250]}..."
+   end 
 end
