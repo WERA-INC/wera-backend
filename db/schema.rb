@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_190820) do
     t.string "company_description"
     t.string "email_address"
     t.string "company_logo"
+    t.boolean "disabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,6 +91,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_190820) do
     t.string "resume"
     t.string "profile_picture"
     t.string "email_address"
+    t.boolean "disabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

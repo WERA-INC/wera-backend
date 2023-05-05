@@ -8,6 +8,7 @@ class CreateEmployers < ActiveRecord::Migration[7.0]
       t.string :company_description
       t.string :email_address
       t.string :company_logo
+      t.boolean :disabled
 
       t.timestamps
     end

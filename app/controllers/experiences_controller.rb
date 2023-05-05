@@ -10,8 +10,7 @@ class ExperiencesController < ApplicationController
   end
 # POST /profiles/:profile_id/experiences
    def create
-  
-    experience=Experience.create!(experience_params)    
+    experience=Experience.create!(experience_params)
     render json: experience
   end
   # DELETE /experiences/:id
@@ -29,16 +28,19 @@ class ExperiencesController < ApplicationController
 
   private
 
+  #Find experience using id
   def find_experience
     Experience.find(params[:id])
   end
+  #Acceptable experience parameters
   def experience_params
       params.permit(:year, :company, :job_description, :profile_id)
   end
+  #Render error message if validation fails
   def invalid_experience_credentials(invalid)
     render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity #422
   end
-  
+
   def experience_not_found
     render json: {errors:["Experience does not exist"]}, status: :not_found  #404
   end

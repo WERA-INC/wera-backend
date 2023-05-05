@@ -7,7 +7,7 @@ resources :profiles, only: [:show] do
   resources :profiles, only: [:show, :index, :update, :destroy]
   resources :employers, only: [:index, :update, :show, :destroy]
   resources :opportunities, only: [:show, :create, :index]
-  resources :tags, only: [:create]
+  resources :tags, only: [:index]
   resources :applications, only: [:index,:create, :show]
 
   # find employer specific job posts
