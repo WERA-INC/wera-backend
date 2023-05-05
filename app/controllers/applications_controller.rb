@@ -17,10 +17,12 @@ class ApplicationsController < ApplicationController
     render json: application
   end
   private
-    def application_params
-        params.permit(:opportunity_id, :profile_id)
-    end
-    def invalid_application_credentials(invalid)
-      render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity #422
-    end
+  #Acceptable application parameters
+  def application_params
+      params.permit(:opportunity_id, :profile_id)
+  end
+  #Render error message if validation fails
+  def invalid_application_credentials(invalid)
+    render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity #422
+  end
 end

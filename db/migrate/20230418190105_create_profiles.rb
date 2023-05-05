@@ -10,6 +10,7 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
       t.string :resume
       t.string :profile_picture
       t.string :email_address
+      t.boolean :disabled
 
       t.timestamps
     end

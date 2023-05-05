@@ -5,7 +5,6 @@ class EmployersController < ApplicationController
   # GET  /employers
   def index
     render json: Employer.all
-    
   end
  # GET employers/:id
   def show
@@ -25,15 +24,15 @@ class EmployersController < ApplicationController
   end
 
   private
-
+#Acceptable employer parameters
   def employer_params
-    params.permit(:company_name, :company_location, :company_description, :company_logo, :email_address)
+    params.permit(:company_name, :company_location, :company_description, :company_logo, :email_address, :disabled)
   end
-
+#Render error message if validation fails
   def invalid_employer_credentials(invalid)
       render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity #422
   end
-
+#Render error message if employer instance is not found
   def employer_not_found
     render json: {errors:["Employer does not exist"]}, status: :not_found  #404
   end

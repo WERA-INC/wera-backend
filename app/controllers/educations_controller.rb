@@ -10,7 +10,6 @@ class EducationsController < ApplicationController
   end
 # POST /profiles/:profile_id/educations
   def create
-  
     education=Education.create!(education_params)
     render json: education
   end
@@ -27,17 +26,20 @@ class EducationsController < ApplicationController
     render json: education
   end
   private
+  #Find education using id
   def find_education
     Education.find(params[:id])
   end
-    def education_params
-        params.permit(:year_of_admission, :year_of_completion, :institution, :qualification, :profile_id)
-    end
-    def invalid_education_credentials(invalid)
-      render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity #422
-    end
-   
-    def education_not_found
-      render json: {errors:["education does not exist"]}, status: :not_found  #404
-    end
+  #Acceptable education parameters
+  def education_params
+      params.permit(:year_of_admission, :year_of_completion, :institution, :qualification, :profile_id)
+  end
+  #Render error message if validation fails
+  def invalid_education_credentials(invalid)
+    render json: {errors:invalid.record.errors.full_messages}, status: :unprocessable_entity #422
+  end
+  #Render error message if instance is not found
+  def education_not_found
+    render json: {errors:["education does not exist"]}, status: :not_found  #404
+  end
 end
